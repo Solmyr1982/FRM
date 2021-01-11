@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "al",
+            "request": "launch",
+            "name": "VTM Server",
+            "server": "http://10.92.102.42",
+            "serverInstance": "VTM",
+            "authentication": "UserPassword",
+            "startupObjectId": 50002,
+            "startupObjectType": "Page",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            //"schemaUpdateMode": "Recreate"
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+var currPhotoNumber = 0;
+var controlPanelVisible = false;
+var pauseMode = false;
+var swapPhotosInterval;
+var fetchingEXIFdata = false;
+var currEXIFFrom = 0;
+var currEXIFTo = 0;
+var prevPhotos = new Array();
+var prevPhotoIDs = new Array();
+var currhistoryIndex = 0;
+var timeInterval = 15000;
+var photoDescription = {};
+var nightTimeStart = new Date('01-01-1970 23:59:59');
+var nightTimeEnd = new Date('01-01-1970 07:00:00');
+var nightMode = false;

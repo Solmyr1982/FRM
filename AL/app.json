@@ -1,0 +1,24 @@
+{
+  "id": "afea383b-7488-44cd-ae76-9e8d66c8265b",
+  "name": "Frame",
+  "publisher": "SOL",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [],
+  "screenshots": [],
+  "platform": "13.0.0.0",
+  "application": "13.0.0.0",
+  "showMyCode": true,
+  "runtime": "2.0",
+  "idRange": {
+    "from": 50000,
+    "to": 60000
+  } ,
+  "target": "Internal" 
+}

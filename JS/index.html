@@ -1,0 +1,60 @@
+<html>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="styles/generic.css" />
+<link rel="icon" href="images/favicon.ico" />
+
+<script type="text/javascript" src="config/configuration.js"></script>
+<script type="text/javascript" src="scripts/globals.js"></script>
+<script type="text/javascript" src="scripts/navigation.js"></script>
+<script type="text/javascript" src="scripts/exiffunctions.js"></script>
+<script type="text/javascript" src="scripts/apicontroller.js"></script>
+<script type="text/javascript" src="scripts/documentready.js"></script>
+<script type="text/javascript" src="scripts/basefunctions.js"></script>
+<script type="text/javascript" src="scripts/backgroundworkers.js"></script>
+<script type="text/javascript" src="scripts/exif.js"></script>
+
+<head>
+    <title>Photo Frame</title>
+</head>
+
+<body>
+    <div>
+        <div id="loadingPart">
+            <p><img id="loadingImage" width="50px" height="50px" src="images/ajax-loader.svg" /></p>
+        </div>
+    </div>
+
+    <div id="frm" class="inner"></div>
+    <div id="info"></div>
+    <div id="controls">
+        <table class="controls" onclick="tableClick(event)">
+            <tr>
+                <td></td>
+                <td><img id="buttonHide" class="navButton" width="100px" height="100px" src="images/hide.png"
+                        onclick="hide()" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><img id="buttonPrev" class="navButton" width="100px" height="100px" src="images/prev.png"
+                        onclick="prev()" /></td>
+                <td><img id="buttonPlayPause" class="navButton" width="150px" height="150px" src="images/pause.png"
+                        onclick="playPause()" /></td>
+                <td><img id="buttonNext" class="navButton" width="100px" height="100px" src="images/next.png"
+                        onclick="next()" /></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <img id="buttonBookmark" class="navButton" width="100px" height="100px" src="images/bookmarkT.png"
+                        onclick="bookmarkT()" />
+                        <img id="buttonBookmark" class="navButton" width="100px" height="100px" src="images/bookmarkO.png"
+                        onclick="bookmarkO()" />
+                </td>
+
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
