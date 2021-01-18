@@ -68,68 +68,12 @@ function playPause() {
 }
 
 function bookmarkT() {
-    var body = { photoID: $('#img' + currPhotoNumber).attr("pid"), photoPath: $('#img' + currPhotoNumber).attr("src") }
+    var body = { photoID: $('#img' + currPhotoNumber).attr("pid"), photoPath: $('#img' + currPhotoNumber).attr("src"), userLetter: "T" }
     sendAPIRequest('FrameProcessor(00000000-0000-0000-0000-000000000000)/Microsoft.NAV.addToLog', 'bookmark', body);
-
-    // https://api.telegram.org/bot1441677898:AAEa86bELfZPFXKwSSnUS_rNu7VxAe6X85I/getUpdates
-    var chat_id = 454419595; // tanya
-    var message = $('#img' + currPhotoNumber).attr("src");
-    message = message.substring(0, message.indexOf("?"));
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://api.telegram.org/bot1441677898:AAEa86bELfZPFXKwSSnUS_rNu7VxAe6X85I/sendPhoto",
-        "method": "POST",
-        "headers": {
-            "Content-Type": "application/json",
-            "cache-control": "no-cache",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
-        },
-        "data": JSON.stringify({
-            "chat_id": chat_id,
-            "photo": message,
-            "caption": message
-        })
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
 }
 
 
 function bookmarkO() {
-    var body = { photoID: $('#img' + currPhotoNumber).attr("pid"), photoPath: $('#img' + currPhotoNumber).attr("src") }
+    var body = { photoID: $('#img' + currPhotoNumber).attr("pid"), photoPath: $('#img' + currPhotoNumber).attr("src"), userLetter: "O" }
     sendAPIRequest('FrameProcessor(00000000-0000-0000-0000-000000000000)/Microsoft.NAV.addToLog', 'bookmark', body);
-
-    // https://api.telegram.org/bot1441677898:AAEa86bELfZPFXKwSSnUS_rNu7VxAe6X85I/getUpdates
-    var chat_id = 257580095; // oleg
-    var message = $('#img' + currPhotoNumber).attr("src");
-    message = message.substring(0, message.indexOf("?"));
-
-    var settings = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://api.telegram.org/bot1441677898:AAEa86bELfZPFXKwSSnUS_rNu7VxAe6X85I/sendPhoto",
-        "method": "POST",
-        "headers": {
-            "Content-Type": "application/json",
-            "cache-control": "no-cache",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
-        },
-        "data": JSON.stringify({
-            "chat_id": chat_id,
-            "photo": message,
-            "caption": message
-        })
-    }
-
-    $.ajax(settings).done(function (response) {
-        console.log(response);
-    });
 }

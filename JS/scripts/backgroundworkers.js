@@ -51,7 +51,13 @@ function swapPhotos() {
 function nightModeCheck() {
     var today = new Date();
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    var dateToCompare = new Date('01-01-1970 ' + time);
+    if (iOS) {
+        var dateToCompare = new Date('1900-01-01T' + time);
+    }
+    else {
+        var dateToCompare = new Date('01-01-1970 ' + time);
+    }
+
     if ((dateToCompare > nightTimeStart) & (dateToCompare < nightTimeEnd)) {
         nightMode = true;
         $('#controls').hide();

@@ -106,3 +106,29 @@ function showProgressBar() {
 function hideProgressBar() {
     $("#loadingPart").hide();
 }
+
+function iOS() {
+    return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+    ].includes(navigator.platform)
+        // iPad on iOS 13 detection
+        || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+}
+
+function timeConversionSlicker(s) {
+    var AMPM = s.slice(-2);
+    var timeArr = s.slice(0, -2).split(":");
+    if (AMPM === "AM" && timeArr[0] === "12") {
+        // catching edge-case of 12AM
+        timeArr[0] = "00";
+    } else if (AMPM === "PM") {
+        // everything with PM can just be mod'd and added with 12 - the max will be 23
+        timeArr[0] = (timeArr[0] % 12) + 12
+    }
+    return timeArr.join(":");
+}  

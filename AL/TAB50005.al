@@ -50,6 +50,21 @@ table 50005 "Frame Processor Setup"
             Caption = 'Night Time End';
             DataClassification = ToBeClassified;
         }
+        field(10; "Telegram Bot ID"; Text[100])
+        {
+            Caption = 'Telegram Bot ID';
+            DataClassification = ToBeClassified;
+        }
+        field(11; "Oleg Chat ID"; Integer)
+        {
+            Caption = 'Oleg Chat ID';
+            DataClassification = ToBeClassified;
+        }
+        field(12; "Tanya Chat ID"; Integer)
+        {
+            Caption = 'Tanya Chat ID';
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys

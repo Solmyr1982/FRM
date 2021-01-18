@@ -36,6 +36,15 @@ page 50006 "Frame Processor Setup"
                 field("Night Time End"; "Night Time End")
                 {
                 }
+                field("Telegram Bot ID"; "Telegram Bot ID")
+                {
+                }
+                field("Oleg Chat ID"; "Oleg Chat ID")
+                {
+                }
+                field("Tanya Chat ID"; "Tanya Chat ID")
+                {
+                }
             }
         }
     }

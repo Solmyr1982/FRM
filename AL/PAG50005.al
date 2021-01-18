@@ -148,9 +148,16 @@ page 50005 "Frame Processor"
 
     [ServiceEnabled]
     [Scope('Personalization')]
-    procedure addToLog(photoID: Integer; photoPath: Text) outParam: Text
+    procedure addToLog(photoID: Integer; photoPath: Text; userLetter: Text) outParam: Text
     var
         PhotoInformation: Record "Photo Information";
+        FrameProcessorSetup: Record "Frame Processor Setup";
+        client: HttpClient;
+        content: HttpContent;
+        HttpHeadersContent: HttpHeaders;
+        HttpResponse: HttpResponseMessage;
+        SoapMessage: text;
+        URL: Text;
     begin
         if not PhotoInformation.get(photoID) then begin
             PhotoInformation.Init();
@@ -162,6 +169,21 @@ page 50005 "Frame Processor"
             PhotoInformation."Added On" := CreateDateTime(Today, Time);
             PhotoInformation.Modify();
         end;
+
+        FrameProcessorSetup.Get();
+        URL := photoPath;
+        URL := URL.Replace(' ', '%20');
+        case userLetter of
+            'O':
+                SoapMessage := '{"chat_id":"' + format(FrameProcessorSetup."Oleg Chat ID") + '","text":"' + URL + '"}';
+            'T':
+                SoapMessage := '{"chat_id":"' + format(FrameProcessorSetup."Tanya Chat ID") + '","text":"' + URL + '"}';
+        end;
+        content.WriteFrom(SoapMessage);
+        content.GetHeaders(HttpHeadersContent);
+        HttpHeadersContent.Remove('Content-Type');
+        HttpHeadersContent.Add('Content-Type', 'application/json');
+        client.Post('https://api.telegram.org/' + FrameProcessorSetup."Telegram Bot ID" + '/sendMessage', content, HttpResponse);
         outParam := 'success';
     end;
 

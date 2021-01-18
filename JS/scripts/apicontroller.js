@@ -20,7 +20,7 @@ function sendAPIRequest(requestName, action, body) {
                             }
                         case 'fetchNextPhotos':
                             {
-                                fetchNextPhotos(xhttp.responseText);                                
+                                fetchNextPhotos(xhttp.responseText);
                                 break;
                             }
                         case 'bookmark': case 'hide':
@@ -40,8 +40,21 @@ function sendAPIRequest(requestName, action, body) {
                             {
                                 var result = JSON.parse(xhttp.responseText);
                                 var nightTimeStartEnd = result.value.split(';');
-                                nightTimeStart = new Date('01-01-1970 ' + nightTimeStartEnd[0]);
-                                nightTimeEnd = new Date('01-01-1970 ' + nightTimeStartEnd[1]);
+                                if (iOS) {
+                                    nightTimeStartEnd[0] = timeConversionSlicker(nightTimeStartEnd[0]);
+                                    nightTimeStartEnd[1] = timeConversionSlicker(nightTimeStartEnd[1]);
+                                    nightTimeStartEnd[0] = nightTimeStartEnd[0].trim();
+                                    nightTimeStartEnd[1] = nightTimeStartEnd[1].trim();
+                                    if (nightTimeStartEnd[1].length == 7) {
+                                        nightTimeStartEnd[1] = '0' + nightTimeStartEnd[1];
+                                    }
+                                    nightTimeStart = new Date('1900-01-01T' + nightTimeStartEnd[0]);
+                                    nightTimeEnd = new Date('1900-01-01T' + nightTimeStartEnd[1]);
+                                }
+                                else {
+                                    nightTimeStart = new Date('01-01-1970 ' + nightTimeStartEnd[0]);
+                                    nightTimeEnd = new Date('01-01-1970 ' + nightTimeStartEnd[1]);
+                                }
                                 break;
                             }
                         default:
@@ -63,3 +76,4 @@ function sendAPIRequest(requestName, action, body) {
         alert('sendAPIRequest ' + err.message);
     }
 }
+
