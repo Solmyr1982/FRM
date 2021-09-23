@@ -1,4 +1,4 @@
-table 50005 "Frame Processor Setup"
+table 50005 "FRM Frame Processor Setup"
 {
     Caption = 'Frame Processor Setup';
 

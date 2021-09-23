@@ -1,7 +1,7 @@
 page 50006 "Frame Processor Setup"
 {
     Caption = 'Frame Processor Setup';
-    SourceTable = "Frame Processor Setup";
+    SourceTable = "FRM Frame Processor Setup";
     DeleteAllowed = false;
     InsertAllowed = false;
     PageType = Card;

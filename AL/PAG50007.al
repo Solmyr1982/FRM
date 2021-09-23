@@ -2,7 +2,7 @@ page 50007 "Photo Information"
 {
     Caption = 'Photo Information';
     PageType = List;
-    SourceTable = "Photo Information";
+    SourceTable = "FRM Photo Information";
 
     layout
     {

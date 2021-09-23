@@ -1,4 +1,4 @@
-table 50006 "Photo Information"
+table 50006 "FRM Photo Information"
 {
     Caption = 'Photo Information';
 

@@ -1,4 +1,4 @@
-table 50007 "Photoframe Log"
+table 50007 "FRM Photoframe Log"
 {
     Caption = 'Photoframe Log';
 

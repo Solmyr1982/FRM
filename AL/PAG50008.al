@@ -2,7 +2,7 @@ page 50008 "Photoframe Log"
 {
     Caption = 'Photoframe Log';
     PageType = List;
-    SourceTable = "Photoframe Log";
+    SourceTable = "FRM Photoframe Log";
 
     layout
     {

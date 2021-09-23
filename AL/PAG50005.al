@@ -8,7 +8,7 @@ page 50005 "Frame Processor"
     PageType = API;
     APIPublisher = 'FRM';
     APIGroup = 'FRM';
-    SourceTable = "Frame Processor Setup";
+    SourceTable = "FRM Frame Processor Setup";
     SourceTableView = SORTING(ID);
 
     layout
@@ -34,8 +34,8 @@ page 50005 "Frame Processor"
     var
         IDs: Array[5] of Integer;
         Paths: Array[5] of Text;
-        FrameProcessorSetup: Record "Frame Processor Setup";
-        PhotoframeLog: Record "Photoframe Log";
+        FrameProcessorSetup: Record "FRM Frame Processor Setup";
+        PhotoframeLog: Record "FRM Photoframe Log";
         NextEntryNo: Integer;
     begin
         // http://solmyr.ddns.net:8080/VTM/?company=VTM&page=50006
@@ -61,9 +61,9 @@ page 50005 "Frame Processor"
 
     procedure AddLog(NextEntryNo: Integer; Paths: Array[5] of Text; appVersion: Text)
     var
-        PhotoframeLog: Record "Photoframe Log";
+        PhotoframeLog: Record "FRM Photoframe Log";
         i: Integer;
-        FrameProcessorSetup: Record "Frame Processor Setup";
+        FrameProcessorSetup: Record "FRM Frame Processor Setup";
     begin
         FrameProcessorSetup.Get();
         for i := 1 to 5 do begin
@@ -81,7 +81,7 @@ page 50005 "Frame Processor"
     [Scope('Personalization')]
     procedure returnTimeInerval() outParam: Text
     var
-        FrameProcessorSetup: Record "Frame Processor Setup";
+        FrameProcessorSetup: Record "FRM Frame Processor Setup";
     begin
         FrameProcessorSetup.Get();
         outParam := format(FrameProcessorSetup."Time Interval");
@@ -91,7 +91,7 @@ page 50005 "Frame Processor"
     [Scope('Personalization')]
     procedure returnNightTimeStartEnd() outParam: Text
     var
-        FrameProcessorSetup: Record "Frame Processor Setup";
+        FrameProcessorSetup: Record "FRM Frame Processor Setup";
     begin
         FrameProcessorSetup.Get();
         outParam := format(FrameProcessorSetup."Night Time Start") + ';' + format(FrameProcessorSetup."Night Time End");
@@ -100,7 +100,7 @@ page 50005 "Frame Processor"
     local procedure FetchPhotoDetailsFromDatabase(var IDs: Array[5] of Integer; var Paths: Array[5] of Text)
     var
         FRMDBCrawler: DotNet FRMDBCrawler;
-        FrameProcessorSetup: Record "Frame Processor Setup";
+        FrameProcessorSetup: Record "FRM Frame Processor Setup";
         RawResponse: Text;
     begin
         FrameProcessorSetup.Get();
@@ -132,7 +132,7 @@ page 50005 "Frame Processor"
 
     local procedure HiddenExists(var IDs: Array[5] of Integer; var HiddenIDs: Array[5] of Integer): Boolean
     var
-        PhotoInformation: Record "Photo Information";
+        PhotoInformation: Record "FRM Photo Information";
         i: Integer;
         Result: Boolean;
     begin
@@ -150,8 +150,8 @@ page 50005 "Frame Processor"
     [Scope('Personalization')]
     procedure addToLog(photoID: Integer; photoPath: Text; userLetter: Text) outParam: Text
     var
-        PhotoInformation: Record "Photo Information";
-        FrameProcessorSetup: Record "Frame Processor Setup";
+        PhotoInformation: Record "FRM Photo Information";
+        FrameProcessorSetup: Record "FRM Frame Processor Setup";
         client: HttpClient;
         content: HttpContent;
         HttpHeadersContent: HttpHeaders;
@@ -191,7 +191,7 @@ page 50005 "Frame Processor"
     [Scope('Personalization')]
     procedure hide(photoID: Integer; photoPath: Text) outParam: Text
     var
-        PhotoInformation: Record "Photo Information";
+        PhotoInformation: Record "FRM Photo Information";
     begin
         if not PhotoInformation.get(photoID) then begin
             PhotoInformation.Init();
