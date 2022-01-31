@@ -1,10 +1,15 @@
-function sendAPIRequest(requestName, action, body) {
+function sendAPIRequest(requestName, action, body, parameter) {
     try {
         var xhttp = new XMLHttpRequest();
         xhttp.withCredentials = true;
         var currentUser = appConfig.anonUserName;
         var currentPassword = appConfig.anonUserPass;
-        xhttp.open("POST", appConfig.APIURL + requestName, true);
+        if (action === 'getGeodata') {
+            xhttp.open("POST", appConfig.GEOAPIURL + requestName, true);
+        }
+        else {
+            xhttp.open("POST", appConfig.APIURL + requestName, true);
+        }
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.setRequestHeader("Authorization", "Basic " + btoa(currentUser + ":" + currentPassword));
         xhttp.send(JSON.stringify(body));
@@ -21,6 +26,12 @@ function sendAPIRequest(requestName, action, body) {
                         case 'fetchNextPhotos':
                             {
                                 fetchNextPhotos(xhttp.responseText);
+                                break;
+                            }
+                        case 'getGeodata':
+                            {
+                                var result = JSON.parse(xhttp.responseText);
+                                photoDescription[parameter] = photoDescription[parameter] + ' ' + result.value;
                                 break;
                             }
                         case 'bookmark': case 'hide':

@@ -48,6 +48,9 @@ function round(x, digits) {
 }
 
 function getCity(lat, lng, pid) {
+    var body = { latitude: lat, longitude: lng }
+    sendAPIRequest('GeonameProcessor(00000000-0000-0000-0000-000000000000)/Microsoft.NAV.getGeodata', 'getGeodata', body, pid);    
+    /*
     var $ = jQuery;
     var def = $.Deferred();
     //$.getJSON('https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=' + lat + '&longitude=' + lng)
@@ -75,4 +78,5 @@ function getCity(lat, lng, pid) {
             def.reject();
         });
     return def.promise();
+    */
 }
